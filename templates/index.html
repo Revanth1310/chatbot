@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .chat-container {
+            width: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+        }
+        .chat-box {
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            height: calc(100% - 50px);
+            overflow-y: auto;
+            flex: 1;
+        }
+        .chat-box p {
+            margin: 5px 0;
+        }
+        .chat-box p strong {
+            color: #007bff;
+        }
+        .chat-box img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .input-box {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .input-box input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .input-box button {
+            margin-left: 10px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .input-box button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div id="chat-box" class="chat-box"></div>
+        <div class="input-box">
+            <input type="text" id="user-input" placeholder="Type your message here..." onkeydown="handleKeyDown(event)">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            if (userInput === "") return;
+
+            const chatBox = document.getElementById('chat-box');
+            chatBox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+
+            fetch("/get", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ message: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                displayBotResponse(data.response);
+            });
+
+            document.getElementById('user-input').value = "";
+        }
+
+        function displayBotResponse(botResponse) {
+            const chatBox = document.getElementById('chat-box');
+            
+            chatBox.innerHTML += `<p><strong>Bot:</strong></p>`;
+            
+            const lines = botResponse.split('\n');
+            lines.forEach(line => {
+                chatBox.innerHTML += `${line}`;
+            });
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function submitQuery(query) {
+            document.getElementById('user-input').value = query;
+            sendMessage();
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>

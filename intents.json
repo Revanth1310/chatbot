@@ -1,0 +1,115 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Good day", "Whats up", "Hey", "greetings"],
+      "responses": ["<p>Hello!</p>", "<p>Good to see you again!</p>", "<p>Hi there, how can I help?</p>"],
+      "context_set": ""
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day", "bye", "cao", "see ya"],
+      "responses": ["<p>Sad to see you go :(</p>", "<p>Talk to you later</p>", "<p>Goodbye!</p>"],
+      "context_set": ""
+    },
+    {
+      "tag": "hod",
+      "patterns": ["who is your hod?", "head of you department", "Tell me about your hod?", "give me the details of hod?", "details of adilakshmi mam"],
+      "responses": ["<img src=../static/images/adilakshmi.jpg alt=adilakshmi.jpg>\n<p> Name: Dr.Yannam Adi Lakshmi\nHOD Of AIML Department<p>"],
+      "context_set": "Faculty_details"
+    },
+    {
+      "tag": "Faculty",
+      "patterns": ["faculty", "faculty of aiml department"],
+      "responses": [
+        "<p>1) <a href='#' onclick=\"submitQuery('Details of adilakshmi mam')\">Dr.Yannam Adi Lakshmi</a> - HOD Of AIML Department<br>2) <a href='#' onclick=\"submitQuery('Details of Salma mam')\">Dr.SK.Salma Begum</a> - Associate Professor | M.Tech, Ph.D<br>3) <a href='#' onclick=\"submitQuery('Details of Amruta Sagar')\">Mr.K.Amruta Sagar</a> - Assistant Professor | M.Tech, (Ph.D)<br>4) <a href='#' onclick=\"submitQuery('Details of Manoj Kumar')\">Mr.Amarthaluri Manoj Kumar</a> - Assistant Professor | M.Tech<br>5) <a href='#' onclick=\"submitQuery('Details of Kalyani mam')\">Ms.Kalyani</a> - Assistant Professor | M.Tech<br>6) <a href='#' onclick=\"submitQuery('Details of Anusha Potluri mam')\">Mrs.Anusha Potluri</a> - Assistant Professor | M.Tech<br>7) <a href='#' onclick=\"submitQuery('Details of Sai Harshita Gutta mam')\">Mrs.Sai Harshita Gutta</a> - Assistant Professor | M.Tech<br>8) <a href='#' onclick=\"submitQuery('Details of Guvvala Trinisha mam')\">Mrs.Guvvala Trinisha</a> - Assistant Professor | M.Tech</p>"
+      ],
+      "context_set": "Faculty_details"
+    },    
+    {
+      "tag": "select_faculty_salma",
+      "patterns": ["give me details of Salma", "Details of salma mam", "who is Salma", "Tell me about Dr. SK Salma Begum"],
+      "responses": ["<img src=../static/images/salma.jpg alt=salma.jpg>\n<p>Name: Dr.SK.Salma Begum\nAssociate Professor | M.Tech, Ph.D</p>"],
+      "context_set": "Faculty_details"
+    },
+    {
+      "tag": "select_faculty_sagar",
+      "patterns": ["give me details of Sagar", "Details of Amruta Sagar", "who is Amruta Sagar", "Tell me about Mr. K Amruta Sagar"],
+      "responses": ["<img src=../static/images/sagar.jpg alt=sagar.jpg>\n<p>Name: Mr.K.Amruta Sagar\nAssistant Professor | M.Tech, (Ph.D)</p>"],
+      "context_set": "Faculty_details"
+    },
+    {
+      "tag": "select_faculty_manoj",
+      "patterns": ["give me details of Manoj", "Details of Manoj Kumar", "who is Manoj Kumar", "Tell me about Mr. Amarthaluri Manoj Kumar"],
+      "responses": ["<img src=../static/images/manoj.jpg alt=manoj.jpg>\n<p>Name: Mr.Amarthaluri Manoj Kumar\nAssistant Professor | M.Tech</p>"],
+      "context_set": "Faculty_details"
+    },
+    {
+      "tag": "select_faculty_kalyani",
+      "patterns": ["give me details of Kalyani", "Details of Kalyani mam", "who is Kalyani", "Tell me about Ms. Kalyani"],
+      "responses": ["<img src=../static/images/kalyani.jpg alt=kalyani.jpg>\n<p>Name: Ms.Kalyani\nAssistant Professor | M.Tech</p>"],
+      "context_set": "Faculty_details"
+    },
+    {
+      "tag": "3rd Year",
+      "patterns": ["subjects of 3rd year"],
+      "responses": ["<p>&nbsp&nbspMain Subjects:</p>\n <p>&nbsp&nbsp ->OS(Operating System)</p>\n <p>&nbsp&nbsp ->FSAD(Full Stack Application Development)</p>\n <p>&nbsp&nbsp ->DAA(Design And Analysis)</p>\n <p>&nbsp&nbsp ->CN(Computer Networks)</p>\n<p>&nbsp&nbspOpen Elective:</p>\n <p>&nbsp&nbsp ->Remote Sensing and GIS</p>\n <p>&nbsp&nbsp ->Green Building Technology</p>\n <p>&nbsp&nbsp ->Power Systems Engineering</p>\n <p>&nbsp&nbsp ->Modeling & Simulation of Engineering Systems</p>\n <p>&nbsp&nbsp ->Venture Development</p>\n <p>&nbsp&nbsp ->Renewable Energy Sources</p>\n <p>&nbsp&nbsp ->Automotive Electronics</p>\n <p>&nbsp&nbsp ->Introduction to Signal Processing</p>\n <p>&nbsp&nbsp ->Social Network Analysis</p>\n  <p>&nbsp&nbsp->Cyber Security</p>\n <p>&nbsp&nbsp ->E-Commerce</p>\n<p>&nbsp&nbsp->Introduction to loT architecture</p>\n  <p>&nbsp&nbsp->Introduction to Smart sensors</p>\n<p>&nbsp&nbspProfessional Elective</p>\n <p>&nbsp&nbsp ->DT(Design Thinking)</p>"],
+      "context_set": "Syllabus"
+    },
+    {
+      "tag": "",
+      "patterns": ["Room Numbers of 3rd year","Room Numbers",""],
+      "responses": ["<p>Class Rooms Numbers For 3rd Years</p>\n<p>&nbsp;&nbsp;&nbsp;&nbspA Section:M-126</p>\n<p>&nbsp;&nbsp;&nbsp;&nbspB Section:M-127</p>\n<p>Lab Numbers:</p>\n<p>&nbsp;&nbsp;&nbsp;&nbspA Section:M-307</p></pre>"],
+      "context_set": ""
+    },
+    {
+      "tag": "2nd Year",
+      "patterns": ["subjects of 2nd year"],
+      "responses": ["<p>&nbsp&nbsp ->Managerial Economics and Financial Analysis</p>\n <p>&nbsp&nbsp ->Advanced Statistics</p>\n <p>&nbsp&nbsp ->Digital Logic Design</p>\n <p>&nbsp&nbsp ->Object Oriented Programming through Java</p>\n <p>&nbsp&nbsp ->Database Management Systems</p>\n <p>&nbsp&nbsp ->Formal Languages and Automata Theory</p>\n  <p>&nbsp&nbsp->Java Programming Lab</p>\n <p>&nbsp&nbsp ->Database Management Systems Lab</p>\n<p>&nbsp&nbsp->Logic Building and Algorithmic Programming</p>"],
+      "context_set": "Syllabus"
+    },
+    {
+      "tag": "",
+      "patterns": [""],
+      "responses": [""],
+      "context_set": ""
+    },
+    {
+      "tag": "",
+      "patterns": [""],
+      "responses": [""],
+      "context_set": ""
+    },
+    {
+      "tag": "",
+      "patterns": [""],
+      "responses": [""],
+      "context_set": ""
+    },
+    {
+      "tag": "",
+      "patterns": [""],
+      "responses": [""],
+      "context_set": ""
+    },
+    {
+      "tag": "",
+      "patterns": [""],
+      "responses": [""],
+      "context_set": ""
+    },
+    {
+      "tag": "",
+      "patterns": [""],
+      "responses": [""],
+      "context_set": ""
+    },
+    {
+      "tag": "",
+      "patterns": [""],
+      "responses": [""],
+      "context_set": ""
+    }
+    
+  ]
+}
